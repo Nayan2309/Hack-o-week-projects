@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>My Shopping Store</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#f6f7fb;
+}
+
+
+header{
+
+background:linear-gradient(135deg,#6a11cb,#2575fc);
+color:white;
+padding:25px;
+text-align:center;
+
+}
+
+header h1{
+font-size:38px;
+margin:0;
+}
+
+
+.container{
+
+width:90%;
+margin:auto;
+
+}
+
+
+.customer{
+
+background:white;
+margin-top:25px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px #ccc;
+
+}
+
+
+input{
+
+padding:10px;
+margin:8px;
+border-radius:8px;
+border:1px solid #aaa;
+
+}
+
+
+
+.products{
+
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+margin-top:30px;
+
+}
+
+
+
+.card{
+
+width:240px;
+background:white;
+padding:15px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 5px 15px #ddd;
+transition:.3s;
+
+}
+
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+
+
+.card img{
+
+width:90%;
+height:160px;
+object-fit:contain;
+border-radius:10px;
+
+}
+
+
+
+.card h3{
+
+color:#333;
+
+}
+
+
+.price{
+
+color:#e91e63;
+font-size:22px;
+font-weight:bold;
+
+}
+
+
+.qty{
+
+width:70px;
+text-align:center;
+
+}
+
+
+
+button{
+
+background:#6a11cb;
+color:white;
+border:0;
+padding:12px 30px;
+border-radius:10px;
+font-size:17px;
+cursor:pointer;
+
+}
+
+
+button:hover{
+
+background:#2575fc;
+
+}
+
+
+
+.bill{
+
+background:white;
+margin-top:35px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px #ccc;
+
+}
+
+
+
+table{
+
+width:100%;
+border-collapse:collapse;
+
+}
+
+
+
+th{
+
+background:#6a11cb;
+color:white;
+
+}
+
+
+
+td,th{
+
+padding:12px;
+border:1px solid #ddd;
+text-align:center;
+
+}
+
+
+
+footer{
+
+background:#111;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:30px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>🛒 SMARTCART STORE</h1>
+
+<p>Smart Shopping Experience With Quality Products</p>
+
+</header>
+
+
+
+<div class="container">
+
+
+
+<div class="customer">
+
+
+<h2>Customer Details</h2>
+
+
+<center>
+
+<input id="name" placeholder="Customer Name">
+
+<input id="phone" placeholder="Phone Number">
+
+<input id="coupon" placeholder="Coupon SAVE10">
+
+
+<p style="color:#e91e63">
+Use SAVE10 for 10% Discount
+</p>
+
+
+</center>
+
+
+</div>
+
+
+
+
+
+<div class="products">
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
+
+<h3>Sports Shoes</h3>
+
+<p class="price">₹1500</p>
+
+Qty
+
+<input class="qty" id="q1" type="number" value="0">
+
+</div>
+
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+
+<h3>Smart Watch</h3>
+
+<p class="price">₹2500</p>
+
+Qty
+
+<input class="qty" id="q2" type="number" value="0">
+
+</div>
+
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e">
+
+<h3>Headphones</h3>
+
+<p class="price">₹1200</p>
+
+Qty
+
+<input class="qty" id="q3" type="number" value="0">
+
+</div>
+
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475">
+
+<h3>T-Shirt</h3>
+
+<p class="price">₹800</p>
+
+Qty
+
+<input class="qty" id="q4" type="number" value="0">
+
+</div>
+
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa">
+
+<h3>Hand Bag</h3>
+
+<p class="price">₹2200</p>
+
+Qty
+
+<input class="qty" id="q5" type="number" value="0">
+
+</div>
+
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083">
+
+<h3>Sunglasses</h3>
+
+<p class="price">₹900</p>
+
+Qty
+
+<input class="qty" id="q6" type="number" value="0">
+
+</div>
+
+
+</div>
+
+
+
+<br>
+
+<center>
+
+<button onclick="bill()">Generate Bill</button>
+
+</center>
+
+
+
+
+
+<div class="bill">
+
+
+<h2 align="center">🧾 Customer Bill</h2>
+
+
+
+<table>
+
+<tr>
+<th>Name</th>
+<td id="cname"></td>
+</tr>
+
+<tr>
+<th>Phone</th>
+<td id="cphone"></td>
+</tr>
+
+<tr>
+<th>Date</th>
+<td id="date"></td>
+</tr>
+
+
+</table>
+
+
+<br>
+
+
+<table>
+
+
+<tr>
+
+<th>Product</th>
+<th>Price</th>
+<th>Qty</th>
+<th>Amount</th>
+
+</tr>
+
+
+
+<tr>
+<td>Shoes</td>
+<td>1500</td>
+<td id="qq1"></td>
+<td id="a1"></td>
+</tr>
+
+
+<tr>
+<td>Watch</td>
+<td>2500</td>
+<td id="qq2"></td>
+<td id="a2"></td>
+</tr>
+
+
+<tr>
+<td>Headphones</td>
+<td>1200</td>
+<td id="qq3"></td>
+<td id="a3"></td>
+</tr>
+
+
+
+<tr>
+<td>T-Shirt</td>
+<td>800</td>
+<td id="qq4"></td>
+<td id="a4"></td>
+</tr>
+
+
+<tr>
+<td>Bag</td>
+<td>2200</td>
+<td id="qq5"></td>
+<td id="a5"></td>
+</tr>
+
+
+<tr>
+<td>Sunglasses</td>
+<td>900</td>
+<td id="qq6"></td>
+<td id="a6"></td>
+</tr>
+
+
+
+<tr>
+
+<th colspan="3">Discount</th>
+
+<td id="discount"></td>
+
+</tr>
+
+
+
+<tr>
+
+<th colspan="3">Total Bill</th>
+
+<td id="total"></td>
+
+</tr>
+
+
+</table>
+
+
+<h3 id="msg" style="text-align:center;color:green"></h3>
+
+
+</div>
+
+
+</div>
+
+
+
+<footer>
+
+Made By- Nayan Awalapane
+SmartCart Store © 2026 | Powered By REST API 
+
+</footer>
+
+
+
+
+<script>
+
+
+function bill(){
+
+
+let q1=Number(document.getElementById("q1").value);
+let q2=Number(document.getElementById("q2").value);
+let q3=Number(document.getElementById("q3").value);
+let q4=Number(document.getElementById("q4").value);
+let q5=Number(document.getElementById("q5").value);
+let q6=Number(document.getElementById("q6").value);
+
+
+let a1=q1*1500;
+let a2=q2*2500;
+let a3=q3*1200;
+let a4=q4*800;
+let a5=q5*2200;
+let a6=q6*900;
+
+
+let total=a1+a2+a3+a4+a5+a6;
+
+
+let discount=0;
+
+
+if(document.getElementById("coupon").value=="SAVE10"){
+
+discount=total*0.10;
+
+}
+
+
+total=total-discount;
+
+
+
+document.getElementById("cname").innerHTML=document.getElementById("name").value;
+
+document.getElementById("cphone").innerHTML=document.getElementById("phone").value;
+
+document.getElementById("date").innerHTML=new Date().toLocaleDateString();
+
+
+
+for(let i=1;i<=6;i++){
+
+document.getElementById("qq"+i).innerHTML=eval("q"+i);
+
+document.getElementById("a"+i).innerHTML="₹"+eval("a"+i);
+
+}
+
+
+document.getElementById("discount").innerHTML="₹"+discount;
+
+document.getElementById("total").innerHTML="₹"+total;
+
+
+document.getElementById("msg").innerHTML="🎉 Thank You For Shopping!";
+
+
+}
+
+
+
+</script>
+
+</body>
+</html>
