@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>🎓 Student Performance Dashboard</h1>
+    <p>Python • Pandas • NumPy • Flask • Matplotlib • Seaborn</p>
+</header>
+
+
+<div class="container">
+
+
+<div class="top-section">
+
+<div class="add-box">
+
+<h2>➕ Add Student</h2>
+
+<form action="/add" method="POST" class="student-form">
+
+<input type="number" name="roll" placeholder="Roll No" required>
+
+<input type="text" name="name" placeholder="Student Name" required>
+
+<input type="number" name="math" placeholder="Math Marks" required>
+
+<input type="number" name="science" placeholder="Science Marks" required>
+
+<input type="number" name="english" placeholder="English Marks" required>
+
+<input type="number" name="attendance" placeholder="Attendance %" required>
+
+<button type="submit">Add Student</button>
+
+</form>
+
+</div>
+
+
+
+<div class="cards">
+
+
+<div class="card">
+<h2>Total Students</h2>
+<h1>{{ students|length }}</h1>
+</div>
+
+
+<div class="card">
+<h2>Highest %</h2>
+<h1>{{ statistics["Highest"] }}%</h1>
+</div>
+
+
+<div class="card">
+<h2>Average %</h2>
+<h1>{{ statistics["Average"] }}%</h1>
+</div>
+
+
+<div class="card">
+<h2>Lowest %</h2>
+<h1>{{ statistics["Lowest"] }}%</h1>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<h2>🏆 Top 5 Students</h2>
+
+<table>
+
+<tr>
+<th>Rank</th>
+<th>Name</th>
+<th>Percentage</th>
+<th>Grade</th>
+</tr>
+
+
+{% for student in top_students %}
+
+<tr>
+<td>{{ student.Rank }}</td>
+<td>{{ student.Name }}</td>
+<td>{{ student.Percentage }}%</td>
+<td>{{ student.Grade }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+
+
+<h2>📉 Bottom 5 Students</h2>
+
+<table>
+
+<tr>
+<th>Rank</th>
+<th>Name</th>
+<th>Percentage</th>
+<th>Grade</th>
+</tr>
+
+
+{% for student in bottom_students %}
+
+<tr>
+<td>{{ student.Rank }}</td>
+<td>{{ student.Name }}</td>
+<td>{{ student.Percentage }}%</td>
+<td>{{ student.Grade }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+
+
+
+<h2>📋 Complete Student Report</h2>
+
+<table>
+
+<tr>
+
+<th>Roll No</th>
+<th>Name</th>
+<th>Math</th>
+<th>Science</th>
+<th>English</th>
+<th>Total</th>
+<th>%</th>
+<th>Grade</th>
+<th>Rank</th>
+<th>Scholarship</th>
+
+</tr>
+
+
+{% for student in students %}
+
+<tr>
+
+<td>{{ student.RollNo }}</td>
+<td>{{ student.Name }}</td>
+<td>{{ student.Math }}</td>
+<td>{{ student.Science }}</td>
+<td>{{ student.English }}</td>
+<td>{{ student.Total }}</td>
+<td>{{ student.Percentage }}</td>
+<td>{{ student.Grade }}</td>
+<td>{{ student.Rank }}</td>
+<td>{{ student.Scholarship }}</td>
+
+</tr>
+
+{% endfor %}
+
+
+</table>
+
+
+
+
+<h2>📚 Subject Average</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+<h2>Math</h2>
+<h1>{{ subject_average["Math"] }}</h1>
+</div>
+
+
+<div class="card">
+<h2>Science</h2>
+<h1>{{ subject_average["Science"] }}</h1>
+</div>
+
+
+<div class="card">
+<h2>English</h2>
+<h1>{{ subject_average["English"] }}</h1>
+</div>
+
+
+</div>
+
+
+
+
+
+<h2>📊 Performance Charts</h2>
+
+
+<div class="chart-container">
+
+
+<div class="chart-card">
+
+<h3>Student Percentage</h3>
+
+<img src="{{ url_for('static', filename='bar_chart.png') }}">
+
+</div>
+
+
+
+<div class="chart-card">
+
+<h3>Grade Distribution</h3>
+
+<img src="{{ url_for('static', filename='pie_chart.png') }}">
+
+</div>
+
+
+</div>
+
+
+
+</div>
+<footer>
+    <p>Designed & Developed by Nayan Awalapane (24070521010)</p>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
