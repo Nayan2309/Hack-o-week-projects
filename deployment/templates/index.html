@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network | XOR Predictor</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            font-family: Arial, sans-serif;
+            color: #f4f5ff;
+            background: linear-gradient(135deg, #10132c, #222454, #153c50);
+        }
+
+        .card {
+            width: 100%;
+            max-width: 470px;
+            padding: 34px;
+            border: 1px solid #ffffff25;
+            border-radius: 22px;
+            background: #171a34eF;
+            box-shadow: 0 20px 60px #0005;
+        }
+
+        .tag {
+            color: #73e5d2;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        h1 { margin-bottom: 10px; }
+        p { color: #c5c9e5; line-height: 1.6; }
+
+        label {
+            display: block;
+            margin: 20px 0 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            color: white;
+            background: #ffffff0d;
+            border: 1px solid #ffffff30;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 24px;
+            padding: 14px;
+            border: 0;
+            border-radius: 10px;
+            background: #73e5d2;
+            color: #10132c;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 24px;
+            padding: 18px;
+            border-radius: 12px;
+            background: #73e5d215;
+            border: 1px solid #73e5d255;
+        }
+
+        .error { color: #ff9b9b; }
+        .small { font-size: 13px; }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <div class="tag">HACK-O-WEEK · NEURAL NETWORKS</div>
+        <h1>XOR Predictor</h1>
+        <p>Enter two binary inputs. The trained neural network will predict the XOR output.</p>
+
+        <form method="POST">
+            <label for="input1">Input 1 (0 or 1)</label>
+            <input id="input1" name="input1" type="number"
+                   min="0" max="1" step="1" required
+                   value="{{ input1 }}">
+
+            <label for="input2">Input 2 (0 or 1)</label>
+            <input id="input2" name="input2" type="number"
+                   min="0" max="1" step="1" required
+                   value="{{ input2 }}">
+
+            <button type="submit">Predict XOR Output</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if prediction is not none %}
+            <section class="result">
+                <h2>Predicted Output: {{ prediction }}</h2>
+                <p>Probability: {{ "%.4f"|format(probability) }}</p>
+                <p class="small">
+                    {% if prediction == 1 %}
+                        The inputs are different, so XOR returns 1.
+                    {% else %}
+                        The inputs are the same, so XOR returns 0.
+                    {% endif %}
+                </p>
+            </section>
+        {% endif %}
+
+        <p class="small">Model: NumPy neural network · Saved with Joblib</p>
+    </main>
+</body>
+</html>
