@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping Cart Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🛒 Shopping Cart Calculator</h1>
+
+    <div class="form">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Product Name"
+        >
+
+        <input
+            type="number"
+            id="price"
+            placeholder="Price"
+        >
+
+        <input
+            type="number"
+            id="qty"
+            placeholder="Quantity"
+        >
+
+        <button onclick="addProduct()">
+            Add to Cart
+        </button>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="cartBody">
+
+        </tbody>
+
+    </table>
+
+    <div class="summary">
+
+        <h2 id="subtotal">
+            Subtotal : ₹0
+        </h2>
+
+        <h2 id="discount">
+            Discount : ₹0
+        </h2>
+
+        <h2 id="grandTotal">
+            Grand Total : ₹0
+        </h2>
+
+    </div>
+
+    <button class="calculate" onclick="calculateTotal()">
+        Calculate Total
+    </button>
+
+    <!-- Student Details -->
+
+    <div class="student-info">
+        Nayan Awalapane | PRN: 24070521010
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
